@@ -1,0 +1,3 @@
+https://www.bleepingcomputer.com/feed/
+https://www.darkreading.com/rss.xml
+https://krebsonsecurity.com/feed/
