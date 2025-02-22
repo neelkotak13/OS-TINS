@@ -4,13 +4,12 @@ from collections import defaultdict
 from datetime import datetime 
 import time 
 
+
+from api_config import GEMINI_API_KEY
 ## GLOBAL VARIABLES BELOW -- ENSURE CORRECT VALUES ARE SET
 ####################################
 # Default location for text files with links to RSS feeds from sites, keep each URL on a separate line
 FEEDS_PATH  = 'rss_feed_links.txt'
-
-# Location to read API key from, FOR SECURITY REASONS, DO NOT PUBLISH CODE WITH API KEY
-GEMINI_API_KEY_PATH = 'llm_api_key.txt'
 
 # Start date of articles to start parsing (note sites may only post dates in a limited range of times)
 #yesterday = time.time() - 2*86400 # subtracting 48 hours worth of seconds to get day before yesterday 
