@@ -59,10 +59,13 @@ def parse_feeds(feeds) -> dict():
                 datePublished_articles_dictionary[(xml_channel.channel.title, entry.title, entry_date)].append(entry.link.removeprefix("https://"))
 
     return datePublished_articles_dictionary
+
 # This function will download all the articles passed by a dictionary with the keys as date published and values as article links
 # The files will be downloaded into a nested folder called 'articles' with subdirectories being the date the article was published
 # and think article links as the file names
 def download_articles(parsed_entries: dict):
+    # return value of articles dictionary with website name as key and list of articles written to as value (ex: {BleepingComputer} : ['path/to/article', 'path/to/another_article'])
+    extracted_articles = defaultdict(list)
     # creates local directory 'articles' to download files into, sorted by date
     for article_data, urls in parsed_entries.items():
         website_name = article_data[0]
@@ -78,26 +81,13 @@ def download_articles(parsed_entries: dict):
                 with open(f"{folder_path}/{article_name}", "w", encoding='utf-8') as f:
                     # make folder & store extracted text to that file named after article title within
                     f.writelines(article_content)
+                    extracted_articles[website_name].append(f"{os.getcwd()}/{folder_path}/{article_name}")
+                    print(f"Wrote extracted article content to '{os.getcwd()}/{folder_path}/{article_name}' from {website_name}")
             except TypeError:
                 os.remove(f"{folder_path}/{article_name}")
                 print(url + ' is empty when parsed. Unable to write summary')
 
-    '''
-    for date, links in parsed_entries.items():
-        for link in links:
-            folder_path = 'articles/'+str(date)+'/'+link
-            os.makedirs(folder_path,exist_ok=True)
-            # retrieve url content and write to file
-            raw_html = trafilatura.fetch_url(link)
-            article_content = trafilatura.extract(raw_html)
-            # NEED TO COME UP WITH NAMING SCHEME THAT WILL WORK -- CURRENTLY WILL NOT WORK
-            try:
-                with open(folder_path, "w", encoding='utf-8') as f:
-                   f.writelines(article_content)
-            except TypeError:
-                print(link + ' is empty when parsed. Unable to write summary')
-    ''' 
-    return 0
+    return extracted_articles
 
 def gemini_summarize_articles(article_paths: list):
     return 0
@@ -110,6 +100,7 @@ def main():
     # Next step step is to create function to download and send article content to LLM for processing
     article_paths = download_articles(parsed_entries)
     # locally download article content that fit in date range from RSS links, return paths in articles folder sorted by date
+    print(article_paths)
     # send article content to gemini to summarize
     ##gemini_summarize_articles(article_paths)
     return 0
