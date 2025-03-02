@@ -1,11 +1,7 @@
-import feedparser
+import feedparser, time, os, trafilatura
 from datetime import datetime, date, timedelta
 from collections import defaultdict
 from datetime import datetime 
-import time 
-import os
-import trafilatura
-from requests import get
 from google import genai
 
 # API key being read from api_config.py file variable set (ensure is included in .gitignore if pushing code via git)
@@ -78,31 +74,55 @@ def download_articles(parsed_entries: dict):
             article_content = trafilatura.extract(raw_html)
             os.makedirs(folder_path,exist_ok=True)
             try:
-                with open(f"{folder_path}/{article_name}", "w", encoding='utf-8') as f:
+                with open(f"{folder_path}/{article_name}.txt", "w", encoding='utf-8') as f:
                     # make folder & store extracted text to that file named after article title within
                     f.writelines(article_content)
-                    extracted_articles[website_name].append(f"{os.getcwd()}/{folder_path}/{article_name}")
-                    print(f"Wrote extracted article content to '{os.getcwd()}/{folder_path}/{article_name}' from {website_name}")
+                    extracted_articles[website_name].append(f"{os.getcwd()}/{folder_path}/{article_name}.txt")
+                    print(f"Wrote extracted article content to '{os.getcwd()}/{folder_path}/{article_name}.txt' from {website_name}")
             except TypeError:
                 os.remove(f"{folder_path}/{article_name}")
-                print(url + ' is empty when parsed. Unable to write summary')
+                print(url + ' is empty when parsed. Unable to write extracted content')
 
     return extracted_articles
 
-def gemini_summarize_articles(article_paths: list):
-    return 0
+def gemini_summarize_articles(article_path):
+    with open(f"{article_path}", "r", encoding='utf-8') as f:
+        article_content = f.read()
+        # Query Gemini via API
+        client = genai.Client(api_key=GEMINI_API_KEY)
+        sys_instruct = "I extracted the following data from an online news article. I want you to provide a concise summary of the information to a working cybersecurity professional that will receive this in a daily newsletter. Their main concerns would be centered around if their organization would be affected by this event. Provide information as accurate as possible, include if IoCs or TTPs are mentioned in the article at the very end of the summary. These summaries must be a maximum of 7 sentences to keep it as concise as possible.",
+        response = client.models.generate_content(
+            model="gemini-2.0-flash",
+            contents=[article_content]
+        )
+
+    try:
+        with open(f"{article_path}_summary.md", "w", encoding='utf-8') as f:
+            # make folder & store extracted text to that file named after article title within
+            f.writelines(response.text)
+            print(f"Wrote LLM summary to '{article_path}_summary.md'")
+    except Exception as e:
+        os.remove(f"{article_path}_summary.md")
+        print(e)
+
+
+    return f"{article_path}_summary.md"
 
 def main():
     feeds = parse_feed_file()
     # take rss feed URLs and go through to extract individual articles/blogs/news links
     # Will return a dictionary where  
     parsed_entries = parse_feeds(feeds) # key is a tuple of (website, article_title, date_published) and value is the list of articles published on that dates
-    # Next step step is to create function to download and send article content to LLM for processing
-    article_paths = download_articles(parsed_entries)
     # locally download article content that fit in date range from RSS links, return paths in articles folder sorted by date
-    print(article_paths)
-    # send article content to gemini to summarize
-    ##gemini_summarize_articles(article_paths)
+    article_paths = download_articles(parsed_entries)
+    # send each article individually to gemini to summarize
+    for website, articles in article_paths.items():
+        # go through each article within the list of each website
+        for article_path in articles:
+            print(f"Sending {website} article {article_path} to Gemini for summary")
+            summary_path = gemini_summarize_articles(article_path)
+            print(f"AI summary for {article_path} written to {summary_path}")
+
     return 0
 
 if __name__ == "__main__":
