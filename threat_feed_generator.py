@@ -80,7 +80,7 @@ def download_articles(parsed_entries: dict):
                     extracted_articles[website_name].append(f"{os.getcwd()}/{folder_path}/{article_name}.txt")
                     print(f"Wrote extracted article content to '{os.getcwd()}/{folder_path}/{article_name}.txt' from {website_name}")
             except TypeError:
-                os.remove(f"{folder_path}/{article_name}")
+                os.remove(f"{folder_path}/{article_name}.txt")
                 print(url + ' is empty when parsed. Unable to write extracted content')
 
     return extracted_articles
@@ -90,10 +90,10 @@ def gemini_summarize_articles(article_path):
         article_content = f.read()
         # Query Gemini via API
         client = genai.Client(api_key=GEMINI_API_KEY)
-        sys_instruct = "I extracted the following data from an online news article. I want you to provide a concise summary of the information to a working cybersecurity professional that will receive this in a daily newsletter. Their main concerns would be centered around if their organization would be affected by this event. Provide information as accurate as possible, include if IoCs or TTPs are mentioned in the article at the very end of the summary. These summaries must be a maximum of 7 sentences to keep it as concise as possible.",
+        sys_instruct = "I extracted the following data from an online news article. I want you to provide a concise summary of the information to a working cybersecurity professional that will receive this in a daily newsletter. Their main concerns would be centered around if their organization would be affected by this event. Be sure to include how the attack was discovered or to whom it was reported to, if applicable and known. When mentioning organizations or companies, include their industry or purpose. Provide information as accurate as possible, include 2-3 IoCs/TTPs at the very end of the summary. These summaries must be between 1 to 7 sentences in length to keep it as concise as possible. Ensure to use active voice when creating the summary and if you are unsure of the certainty of any statements, please state so in the summary. Lastly, finish off with speculation of potentially impacted parties. Here are some examples of what the summaries should look like: ```Qilin ransomware has claimed responsibility for the February 3rd cyberattack on Lee Enterprises, a US-based media company, and leaked samples of allegedly stolen data after Lee Enterprise's disclosure to the SEC. The attackers claim to have stolen 350GB of data, including sensitive documents, and threaten to release it all on March 5, 2025, if a ransom is not paid. Lee Enterprises is aware of the claims and is currently investigating. Qilin has been known to target organizations such as automotive giant Yangfeng, Australia's Court Services Victoria, and NHS hospitals in London and is associated with the Scattered Spider hacking group. Organizations in the media and publishing sectors should assess their risk and review security measures. IoCs/TTPs: Data exfiltration, encryption of critical applications, custom Chrome credential stealer.```",
         response = client.models.generate_content(
             model="gemini-2.0-flash",
-            contents=[article_content]
+            contents=["Summarize this article text:```" + article_content + "```"] 
         )
 
     try:
