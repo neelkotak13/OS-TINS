@@ -1,0 +1,74 @@
+Update 3/9/25: After receiving concerns about the use of the term 'backdoor' to refer to these undocumented commands, we have updated our title and story. Our original story can be found here.
+The ubiquitous ESP32 microchip made by Chinese manufacturer Espressif and used by over 1 billion units as of 2023 contains undocumented commands that could be leveraged for attacks.
+The undocumented commands allow spoofing of trusted devices, unauthorized data access, pivoting to other devices on the network, and potentially establishing long-term persistence.
+This was discovered by Spanish researchers Miguel Tarascó Acuña and Antonio Vázquez Blanco of Tarlogic Security, who presented their findings yesterday at RootedCON in Madrid.
+"Tarlogic Security has detected a backdoor in the ESP32, a microcontroller that enables WiFi and Bluetooth connection and is present in millions of mass-market IoT devices," reads a Tarlogic announcement shared with BleepingComputer.
+"Exploitation of this backdoor would allow hostile actors to conduct impersonation attacks and permanently infect sensitive devices such as mobile phones, computers, smart locks or medical equipment by bypassing code audit controls."
+The researchers warned that ESP32 is one of the world's most widely used chips for Wi-Fi + Bluetooth connectivity in IoT (Internet of Things) devices, so the risk is significant.
+Discovering undocumented commands in ESP32
+In their RootedCON presentation, the Tarlogic researchers explained that interest in Bluetooth security research has waned but not because the protocol or its implementation has become more secure.
+Instead, most attacks presented last year didn't have working tools, didn't work with generic hardware, and used outdated/unmaintained tools largely incompatible with modern systems.
+Tarlogic developed a new C-based USB Bluetooth driver that is hardware-independent and cross-platform, allowing direct access to the hardware without relying on OS-specific APIs.
+Armed with this new tool, which enables raw access to Bluetooth traffic, Tarlogic discovered hidden vendor-specific commands (Opcode 0x3F) in the ESP32 Bluetooth firmware that allow low-level control over Bluetooth functions.
+In total, they found 29 undocumented commands, collectively characterized as a "backdoor," that could be used for memory manipulation (read/write RAM and Flash), MAC address spoofing (device impersonation), and LMP/LLCP packet injection.
+Espressif has not publicly documented these commands, so either they weren't meant to be accessible, or they were left in by mistake. The issue is now tracked under CVE-2025-27840.
+The risks arising from these commands include malicious implementations on the OEM level and supply chain attacks.
+Depending on how Bluetooth stacks handle HCI commands on the device, remote exploitation of the commands might be possible via malicious firmware or rogue Bluetooth connections.
+This is especially the case if an attacker already has root access, planted malware, or pushed a malicious update on the device that opens up low-level access.
+In general, though, physical access to the device's USB or UART interface would be far riskier and a more realistic attack scenario.
+"In a context where you can compromise an IOT device with as ESP32 you will be able to hide an APT inside the ESP memory and perform Bluetooth (or Wi-Fi) attacks against other devices, while controlling the device over Wi-Fi/Bluetooth," explained the researchers to BleepingComputer.
+"Our findings would allow to fully take control over the ESP32 chips and to gain persistence in the chip via commands that allow for RAM and Flash modification."
+"Also, with persistence in the chip, it may be possible to spread to other devices because the ESP32 allows for the execution of advanced Bluetooth attacks."
+BleepingComputer has contacted Espressif for a statement on the researchers' findings, but a comment wasn't immediately available.
+Update 3/10/25: Espressif published a statement Monday in response to Tarlogic's findings, stating that the undocumented commands are debug commands used for internal testing.
+"The functionality found are debug commands included for testing purposes," reads Espressif's statement.
+"These debug commands are part of Espressif’s implementation of the HCI (Host Controller Interface) protocol used in Bluetooth technology. This protocol is used internally in a product to communicate between Bluetooth layers."
+Despite the low risk, the vendor stated that it will remove the debug commands in a future software update.
+"While these debug commands exist, they cannot, by themselves, pose a security risk to ESP32 chips. Espressif will still provide a software fix to remove these undocumented commands," says Espressif.
+Update 3/8/25: Added statement from Tarlogic.
+Update 3/9/25: Added CVE-ID
+Update 3/10/25: Added Espressif statement
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Comments
+h_b_s - 2 weeks ago
+Looks to be another case where hardware debug instructions were left exposed in the final product for whatever reason.
+Once you have developed a driver you can gain remote access by other means, trigger your privilege elevation and drop your substitute ESP32 driver in place for whatever shennanigans you intend.
+There's no easy fix to this without replacing all ESP32 hardware, assuming Espressif bothers with a fixed hardware revision, OEMs issue a recall, and users even know they have a proverbial time bomb waiting for bot-net inclusion or network pivot. It's a practical guarantee that the vast majority of people and organizations aren't even aware of the chip sets in all the IoT devices present in their home or physical plant.
+superSun - 2 weeks ago
+This is very distorted information.
+First, the undocumented commands, it is not the "backdoor". It is very common that software/firmware and hardware product has undocumented commands that is how product works..it is for the manufacturer designing and debugging products needs
+Secondly, Bluetooth is very short distance communication for ESP32 chip, the communication distance is less than 10 meters. If you want to hack the home appliance, you must stay in the premise, you can manually turn on/off. It does not work hacker remotely in anywhere.
+So, your device is very safe for the Bluetooth driver flaw
+kanungor - 2 weeks ago
+It allows for a lateral attack. I break into a computer and then use that to move to others via Bluetooth-connected systems. This is the whole reason that firewalls are not as effective as they seem, and zero-trust is the only way to go.
+AndreKR - 2 weeks ago
+This seems to be a bad attempt to promote the Tarlogic company, causing a bit of a panic in the process. From the slides it looks like there is no actual backdoor at all, all they found is a couple of undocumented register values, which is a totally normal thing. There is nothing to exploit, neither within Bluetooth range nor otherwise.
+jeffumpton - 2 weeks ago
+Calling this a back door is nonsense. HCI is pretty much the front door of a Bluetooth chip, the low level API your application uses to operate Bluetooth , if you’ve not secured access to that channel on your application these commands are the least of your worries .
+It’s so tiring that so much so called security research these days just aims to stirs up drama for marketing, propaganda and clicks
+-Badger- - 2 weeks ago
+Am I missing something?
+I don't see any backdoor in the info or slides.
+"MAC address spoofing" and "packet injection" has been a thing for decades on both BT and WiFi and not unique to this hardware.
+Could by the same logic I claim that I discovered a wireless router that has a user editable SSID value which makes every wireless device and network on earth vulnerable to this "backdoor".
+chkplz - 1 week ago
+I'm more concerned about the backdoor Boeing left in it's 737's
+-Badger- - 1 week ago
+I am concerned that Boeing does not leave the backdoors in, and instead has uninstall themself in flight at 16,000 feet.
+Jkfman23 - 1 week ago
+Sadly, this article sounds more like part of the $1.6 billion, anti China propaganda funded by the Biden administration mid last year.
+Drags - 1 week ago
+You make it sound like China needs any help with that.
+NoneRain - 1 week ago
+<p>Guys, these commands could be used for espionage like that involves manufacturing and OEM. I know it is kinda tinfoil, but hw and firmware were modified in the past (by gov`s secret agencies) to pass-thought cybersec and affectedly enter enterprises linked to government. So, there are a 'backdoor' that can be abused in these scenarios. The matter that other manufacturers, brands, techs, also utilize undocumented commands that can be used to exploit the devices is not relevant here, since they discovered the commands specific to the ESP32, and not for other stuff.</p>
+whataboutism - 1 week ago
+It seems some Chinese MiniTrue army (and those unwittingly influenced) are in full swing with their "what-about-ism" throwing everything out there to see what sticks before amplifying it everywhere they can.
+Distract and detract - old authoritarian playbook, and watch them get triggered when pointed out because their education states that everything from China is great, even if it means to logically turn a blind eye to a glaring security vulnerability and do everything they can to steer conversation away from it.
+It is definitely not a smoking gun, but if something looks like a duck, swims like a duck and tastes great when you roast it..... Vulnerabilities are VULNERABILITIES, and don't try to explain it away something that should NEVER have been implemented when they very well could be chained together by sophisticated threat actors.
+Never a good idea to have undocumented features in your product, especially when they can be used to provide root privilege for lateral movement and more. Similar things happened when PRC-associated groups broke into JPL and exfiltrated massive amounts of data through a vulnerable IoT device as an entry point.
+rtfmoz - 1 week ago
+You can’t look at this as a back door unless you understand the entire picture. It could well be a part of a back door solution that can use these functions to modify or affect some part of the data flow. Just enough to get it past some flaw in a protocol that means security will accept it as valid when normally it would be flagged. Your only as strong as your weakest links.
+ptegler - 1 week ago
+We'll tack this on to tracking the e-fuse issue (buried, locked code, possibly buried during supply chain handling) Now we're told BT commands HAVE been found? The whole premise of letting bluetooth, send commands to automate wifi setup has ALWAYS been a security issue.
+Now we are being told there are commands avail to play with this very connectivity control!

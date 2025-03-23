@@ -1,4 +1,4 @@
-import feedparser, time, os, trafilatura
+import feedparser, time, os, trafilatura, sys
 from datetime import datetime, date, timedelta
 from collections import defaultdict
 from datetime import datetime 
@@ -118,17 +118,54 @@ def gemini_summarize_articles(article_path, article_url):
     return f"{article_path}_summary.md"
 
 def main():
-    feeds = parse_feed_file()
-    # take rss feed URLs and go through to extract individual articles/blogs/news links
-    # Will return a dictionary where  
-    parsed_entries = parse_feeds(feeds) # key is a tuple of (website, article_title, date_published) and value is the list of articles published on that dates
-    # locally download article content that fit in date range from RSS links, return paths in articles folder sorted by date
-    article_paths = download_articles(parsed_entries)
-    # send each article individually to gemini to summarize
-    for (website, url), article in article_paths.items():
-         print(f"Sending {website} article {article} to Gemini for summary")
-         summary_path = gemini_summarize_articles(article, url)
-         print(f"AI summary for {article} written to {summary_path}")
+    # check if any args were provided for testing directly on a list of URLs as an argument
+    if len(sys.argv) > 1:
+        # iterate through URLs (excluding the script name)
+        for i, url in enumerate(sys.argv[1:]):
+            article_name = "individual_articles/"
+            # make initial individual article folder if doesn't exist already
+            os.makedirs(article_name,exist_ok=True)
+            # takes the last non-empty directory as local extracted text file name 
+            url_split = url.split('/')
+            for article in url_split[::-1]:
+                if article != '':
+                    article_name+=article
+                    article_name+=".txt"
+                    break
+            # retrieve url content and extract only text from article
+            raw_html = trafilatura.fetch_url(url)
+            article_content = trafilatura.extract(raw_html)
+            try:
+                with open(f"{article_name}", "w", encoding='utf-8') as f:
+                    # make folder & store extracted text to that file named after article title within
+                    f.writelines(article_content)
+                    # extracted_articles[(website_name, url)] = f"{article_path}.txt"
+                    print(f"Wrote extracted article content to '{article_name}'\n")
+            except TypeError:
+                os.remove(f"{article_name}")
+                print(url + ' is empty when parsed. Unable to write extracted content')
+            except FileNotFoundError:
+                print(url + ' did not download article for some reason, moving on')
+            except OSError:
+                print(url + ' some kind of filename formatting issue')
+
+            print(f"Sending {url} article {article_name} to Gemini for summary\n")
+            summary_name = gemini_summarize_articles(article_name, url)
+            print(f"AI summary for {url} written to {summary_name}\n")
+
+    # if no URL args are passed, simply read RSS file 
+    else:
+        feeds = parse_feed_file()
+        # take rss feed URLs and go through to extract individual articles/blogs/news links
+        # Will return a dictionary where  
+        parsed_entries = parse_feeds(feeds) # key is a tuple of (website, article_title, date_published) and value is the list of articles published on that dates
+        # locally download article content that fit in date range from RSS links, return paths in articles folder sorted by date
+        article_paths = download_articles(parsed_entries)
+        # send each article individually to gemini to summarize
+        for (website, url), article in article_paths.items():
+            print(f"Sending {website} article {article} to Gemini for summary\n")
+            summary_path = gemini_summarize_articles(article, url)
+            print(f"AI summary for {article} written to {summary_path}\n")
 
     return 0
 
