@@ -11,12 +11,7 @@ from api_config import GEMINI_API_KEY
 # Default location for text files with links to RSS feeds from sites, keep each URL on a separate line
 FEEDS_PATH  = 'rss_feed_links.txt'
 
-# Start date of articles to start parsing (note sites may only post dates in a limited range of times)
-#yesterday = time.time() - 2*86400 # subtracting 48 hours worth of seconds to get day before yesterday 
-#START_DATE = time.struct_time(time.localtime(yesterday))
-
-#yesterday = 
-#dt_yesterday = datetime(int(time.localtime(*yesterday[:6])))
+# Start date, updates the days value if you want to parse older articles available in the RSS feed
 START_DATE = date.today() - timedelta(days=2)
 
 # End date of articles to complete parsing (set to same day as start date if only for a single day)

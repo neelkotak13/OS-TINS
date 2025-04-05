@@ -1,0 +1,19 @@
+ChatGPT Plus subscription is now free, but only if you're a student based out of the United States of America and Canada.
+ChatGPT Plus is a premium subscription that costs $20 a month and allows you to access the paid models, including GPT o1, which is the company's best reasoning model.
+Additionally, it gives you access to o3-mini and o3-high reasoning models, which are absent from the free tier.
+OpenAI is making these features free for college students just in time for final exams.
+However, according to an FAQ document, students will be able to access the Premium tier for free until the end of May only.
+"We are offering a Plus discount for students on a limited-time basis in the US and Canada," the company noted in a FAQ.
+"This is an experimental consumer program and we may or may not expand this to more schools and countries over time."
+OpenAI will verify if you're a student before you can avail the offer
+OpenAI says it will verify student status using SheerID’s secure verification system, which confirms your eligibility through multiple methods:
+-
+Authoritative Sources: SheerID first checks trusted databases, such as your university's Office of the Registrar, to instantly verify your student status.
+-
+Single Sign-On (SSO): If necessary, you’ll be prompted to log in securely with your school's SSO credentials, confirming your affiliation directly through your institution.
+This move comes after rival AI company Anthropic announced Claude for Education, which helps students learn concepts using AI.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Post a Comment Community Rules
+You need to login in order to post a comment
+Not a member yet? Register Now

@@ -1,0 +1,16 @@
+The Hunters International Ransomware-as-a-Service (RaaS) operation is shutting down and rebranding with plans to switch to data theft and extortion-only attacks.
+As threat intelligence firm Group-IB revealed this week, the cybercrime group remained active despite announcing on November 17, 2024, that it was shutting down due to declining profitability and increased government scrutiny.
+Since then, Hunters International has launched a new extortion-only operation known as "World Leaks" on January 1, 2025.
+"From the administrator's perspective, ransomware is no longer profitable and risky. The criminals collaborating with the group will be provided with a purportedly self-developed exfiltration tool designed to automate the process of data exfiltration in the victims' networks," Group-IB said on Wednesday.
+"Unlike Hunters International, which combined encryption with extortion, World Leaks operates as an extortion-only group using a custom-built exfiltration tool."
+The new tool seems to be an upgraded variant of the Storage Software exfiltration tool that Hunters International's ransomware affiliates also use.
+Hunters International surfaced in late 2023 and was flagged as a possible rebrand of Hive because of code similarities. Its ransomware targets a wide range of platforms, including Windows, Linux, FreeBSD, SunOS, and ESXi (VMware servers), and it also supports x64, x86, and ARM architectures.
+Since its emergence, this ransomware gang has claimed over 280 attacks against organizations worldwide, making it one of the most active ransomware operations.
+Notable victims claimed by Hunters International include Tata Technologies, North American automobile dealership AutoCanada, U.S. Marshals Service, Japanese optics giant Hoya, U.S. Navy contractor Austal USA, and Oklahoma's largest not-for-profit health network, Integris Health.
+Hunters International also breached the Fred Hutch Cancer Center in December, threatening to leak the stolen data of over 800,000 cancer patients if they weren't paid.
+So far, Hunters International operators have targeted companies of all sizes. BleepingComputer has seen ransom demands ranging from hundreds of thousands to millions of dollars, depending on the breached organization's size.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Post a Comment Community Rules
+You need to login in order to post a comment
+Not a member yet? Register Now

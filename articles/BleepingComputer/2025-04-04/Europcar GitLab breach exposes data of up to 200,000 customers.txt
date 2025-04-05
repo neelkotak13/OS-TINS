@@ -1,0 +1,22 @@
+A hacker breached the GitLab repositories of multinational car-rental company Europcar Mobility Group and stole source code for Android and iOS applications, as well as some personal information belonging to up to 200,000 customers.
+The actor tried to extort the company by threatening to publish 37GB of data that includes backups and details about the company’s cloud infrastructure and internal applications.
+Europcar Mobility Group is a subsidiary of Green Mobility Holding that operates the Europcar, Goldcar, and Ubeeqo brands with a diverse offering of compact cars, luxury vehicles, vans, and trucks.
+The company's customer base is substantial, spread across 140 countries in Europe, North America, Asia, and Africa.
+Stolen SQL backups and app config files
+In late March, a threat actor using the company’s name as an alias, announced that they “successfully breached Europcar's systems and obtained all their GitLab repositories.”
+They claimed to have copied from the repositories more than 9.000 SQL files with backups that have personal data, and at least 269 .ENV files - used to store configuration settings for applications, environment variables, and sensitive information.
+To prove that the breach is not a hoax, Europcar the threat actor published screenshots of credentials present in the source code they stole.
+BleepingComputer received confirmation that the compromise is real and that Europcar Mobility Group is currently assessing the extent of the damage.
+The threat actor’s claim that they stole all the company’s GitLab repositories is not entirely accurate, though. We learned that a small part of the source code remained untouched.
+While the full extent of the damage is still being evaluated, the stolen data includes only names and email addresses of Goldcar and Ubeeqo users. Based on online statistics, the number of affected customers may be between 50,000 and 200,000, some of them from 2017 and 2020.
+More sensitive information, like bank and card details, or passwords has not been exposed.
+The company is now in the process of notifying all impacted customers and has notified the data protection authority in the country.
+It is unclear how the threat actor managed to gain access to Europcar’s code repositories but many recent breaches were fueled by credentials stolen in infostealer compromises.
+Last year, Europcar was the target of a fake breach, when someone claimed on a hacker forum to possess the personal info (names, addresses, birth dates, driver's license numbers) of nearly 50 million customers.
+In 2022, a researcher discovered an admin token in the code of Europcar’s apps for mobile devices (Android and iOS), which could be used to access customers’ biometric details.
+The issue was due to a development error and affected multiple mobile applications from other service providers.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Post a Comment Community Rules
+You need to login in order to post a comment
+Not a member yet? Register Now

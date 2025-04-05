@@ -1,0 +1,20 @@
+A large-scale phishing campaign dubbed 'PoisonSeed' compromises corporate email marketing accounts to distribute emails containing crypto seed phrases used to drain cryptocurrency wallets.
+According to SilentPush, the campaign targets Coinbase and Ledger using compromised accounts at Mailchimp, SendGrid, HubSpot, Mailgun, and Zoho.
+The researchers link the campaign to recent incidents, such as the case of Troy Hunt's Mailchimp account compromise from late last month and an Akamai SendGrid account hack BleepingComputer reported in mid-March 2025, where the legitimate account was used to send out Coinbase seed phrase phishing emails.
+Although the PoisonSeed campaign shares similarities with operations by the CryptoChameleon and Scattered Spider threat actors, Silent Push categorizes it separately due to code differences and other differentiating factors.
+PoisonSeed attack chain
+The first step in the attack is to identify high-value targets with access to CRM and bulk email platforms. This can be done by checking what email companies use for their newsletters or marketing and finding employees in related positions.
+Next, they target them with professionally crafted phishing emails sent from spoofed addresses, taking them to fake login pages hosted on carefully named domains to appear legitimate.
+For example, in emails targeting MailChimp customers, the threat actors used the domains mail-chimpservices[.]com, mailchimp-sso[.]com, and mailchimp-ssologin[.]com.
+Once their credentials are stolen, the attackers export mailing lists and generate new API keys to maintain access to the hijacked account even if the victim quickly changes their password.
+The attacker then uses the compromised account to send crypto-themed phishing spam to the extracted mailing lists with alerts that prompt the recipient's action, like 'Coinbase is transitioning to self-custodial wallets.'
+The phishing email includes a Coinbase wallet seed phrase, telling the user to enter it into a new crypto wallet as part of an upgrade or migration. If the victim follows this instruction and transfers their assets into it, they essentially "poison" their wallets, enabling the threat actors to access and drain them.
+That is because, when creating a new wallet, the victim isn't using a secure, pre-generated seed phrase from the company (Coinbase) like they are made to believe, but instead using one for a wallet already under the attackers' control.
+Transferring their crypto into that wallet is basically handing over all their digital assets to the attacker, who can then transfer the funds out.
+The best way to deal with urgent requests arriving via email is to ignore them and independently (not by clicking on the embedded links) log in to the claimed platform and check if there are any pending alerts for your account.
+Cryptocurrency wallet users should never use a seed phrase provided by someone else, as a legitimate platform will never send a pre-generated seed phrase. Users should always generate their own seed phrases when creating a new wallet and never share them with anyone else.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Post a Comment Community Rules
+You need to login in order to post a comment
+Not a member yet? Register Now

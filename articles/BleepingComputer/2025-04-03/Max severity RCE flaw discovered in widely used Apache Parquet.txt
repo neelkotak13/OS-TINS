@@ -1,0 +1,23 @@
+A maximum severity remote code execution (RCE) vulnerability has been discovered impacting all versions of Apache Parquet up to and including 1.15.0.
+The problem stems from the deserialization of untrusted data that could allow attackers with specially crafted Parquet files to gain control of target systems, exfiltrate or modify data, disrupt services, or introduce dangerous payloads such as ransomware.
+The vulnerability is tracked under CVE-2025-30065 and has a CVSS v4 score of 10.0. The flaw was fixed with the release of Apache version 1.15.1.
+It should be noted that to exploit this flaw, threat actors must convince someone to import a specially crafted Parquet file.
+Severe threat to "big data" environments
+Apache Parquet is an open-source, columnar storage format designed for efficient data processing. Unlike row-based formats (like CSV), Parquet stores data by columns, which makes it faster and more space-efficient for analytical workloads.
+It is widely adopted across the data engineering and analytics ecosystem, including big data platforms like Hadoop, AWS, Amazon, Google, and Azure cloud services, data lakes, and ETL tools.
+Some large companies that use Parquet include Netflix, Uber, Airbnb, and LinkedIn.
+The security problem in Parquet was disclosed on April 1, 2025, following a responsible disclosure by its finder, Amazon researcher Keyi Li.
+"Schema parsing in the parquet-avro module of Apache Parquet 1.15.0 and previous versions allows bad actors to execute arbitrary code," warned the short bulletin published on Openwall.
+"Users are recommended to upgrade to version 1.15.1, which fixes the issue."
+A separate bulletin by Endor Labs highlights the risk of CVE-2025-30065 exploitation more clearly, warning that the flaw can impact any data pipelines and analytics systems that import Parquet files, with the risk being significant for files sourced from external points.
+Endor Labs believes the problem was introduced in Parquet version 1.8.0, though older releases might also be impacted. The firm suggests coordinated checks with developers and vendors to determine what Praquet versions are used in production software stacks.
+"If an attacker tricks a vulnerable system into reading a specially crafted Parquet file, they could gain remote code execution (RCE) on that system," warns Endor Labs.
+However, the security firm avoids over-inflating the risk by including the note, "Despite the frightening potential, it's important to note that the vulnerability can only be exploited if a malicious Parquet file is imported."
+That being said, if upgrading to Apache Parquet 1.15.1 immediately is impossible, it is suggested to avoid untrusted Parquet files or carefully validate their safety before processing them. Also, monitoring and logging on systems that handle Parquet processing should be increased.
+Although no active exploitation has been discovered yet, the risk is high due to the flaw's severity and the widespread use of Parquet files in big data applications.
+Administrators of impacted systems are recommended to upgrade to Parquet version 1.15.1, which addresses CVE-2025-30065, as soon as possible.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Post a Comment Community Rules
+You need to login in order to post a comment
+Not a member yet? Register Now

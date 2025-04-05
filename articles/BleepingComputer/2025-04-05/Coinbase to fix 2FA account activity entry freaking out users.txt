@@ -1,0 +1,20 @@
+Coinbase is fixing a misleading account activity message that has caused confusion and anxiety, making users think their credentials were compromised.
+Over the past couple of weeks, numerous people have contacted BleepingComputer about concerns that they think Coinbase has a serious security issue.
+After receiving Coinbase phishing emails or texts, they logged into their accounts and checked the activity log, finding numerous entries stating "second_factor_failure" or "2-step verification failed" with login attempts from unusual locations.
+Two-factor authentication prompts usually occur after a user successfully logs in with their credentials, so they immediately thought that their passwords were compromised and that only 2FA saved them from their account being hacked.
+This led them to change their passwords, check for malware, and grow anxious over what they believed was a breach.
+Making matters worse, these users claimed to have a complex, unique password at Coinbase, and there were no signs of malware on their devices, making them believe that Coinbase had been breached.
+However, it turns out that the "second_factor_failure" or "2-step verification failed" account activity messages are shown in two different scenarios—when a user incorrectly enters the wrong 2FA code or when someone tries to log into their account with the wrong password.
+BleepingComputer was able to confirm this by logging into someone's account with the wrong password and the person telling us that their account activity page soon showed the mislabeled 2FA error.
+Similar concerns were expressed on Reddit, where users receiving these alerts also confirmed incorrect passwords caused them.
+"I think they mean that the error doesnt [sic] give any actual detail of what happened," a Coinbase customer posted to Reddit.
+"To me the error means someone has the pw but not 2fa, but thats not what it means. It should probably should be something like "invalid password" if that is what is actually happening."
+Coinbase has told BleepingComputer that they are looking into changing the error message when an incorrect password is entered but that there is no time frame as to when this occurs.
+Unfortunately, BleepingComputer was told that threat actors use these erroneous error messages as part of social engineering attacks that attempt to breach Coinbase accounts by making targets think their credentials are compromised.
+BleepingComputer has not been able to independently verify if this "bug" is being abused in that way.
+As a reminder, Coinbase will never text or call you about suspicious activity on your account, so if you receive a phone call or text message, just ignore it and do not engage with the scammers.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Post a Comment Community Rules
+You need to login in order to post a comment
+Not a member yet? Register Now

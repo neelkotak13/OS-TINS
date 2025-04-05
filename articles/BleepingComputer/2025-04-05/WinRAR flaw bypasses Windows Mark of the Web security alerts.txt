@@ -1,0 +1,19 @@
+A vulnerability in the WinRAR file archiver solution could be exploited to bypass the Mark of the Web (MotW) security warning and execute arbitrary code on a Windows machine.
+The security issue is tracked as CVE-2025-31334 and affects all WinRAR versions except the most recent release, which is currently 7.11.
+Mark of the Web is a security function in Windows in the form of a metadata value (an alternate data stream named ‘zone-identifier’) to tag as potentially unsafe files downloaded from the internet.
+When opening an executable with the MotW tag, Windows warns the user that it was downloaded from the internet and could be harmful and offers the option to continue execution or terminate it.
+Symlink to executable
+The CVE-2025-31334 vulnerability can help a threat actor bypass the MotW security warning when opening a symbolic link (symlink) pointing to an executable file in any WinRAR version before 7.11.
+An attacker could execute arbitrary code by using a specially crafted symbolic link. It should be noted that a symlink can be created on Windows only with administrator permissions.
+The security issue received a medium severity score of 6.8 and has been fixed in the latest version of WinRAR, as noted in the applications change log:
+“If symlink pointing at an executable was started from WinRAR shell, the executable Mark of the Web data was ignored” - WinRAR
+The vulnerability was reported by Shimamine Taihei of Mitsui Bussan Secure Directions through the Information Technology Promotion Agency (IPA) in Japan.
+Japan’s Computer Security Incident Response Team coordinated the responsible disclosure with WinRAR’s developer.
+Starting version 7.10, WinRAR provides the possibility to remove from the MotW alternate data stream information (e.g. location, IP address) that could be considered a privacy risk.
+Threat actors, including state-sponsored ones, have exploited MotW bypasses in the past to deliver various malware without triggering the security warning.
+Recently, Russian hackers leveraged such a vulnerability in the 7-Zip archiver, which did not propagate the MotW when double archiving (archiving a file within another one) to run the Smokeloader malware dropper.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Post a Comment Community Rules
+You need to login in order to post a comment
+Not a member yet? Register Now

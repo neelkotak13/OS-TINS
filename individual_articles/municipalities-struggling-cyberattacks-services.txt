@@ -1,0 +1,22 @@
+Municipalities in four states are struggling with cyberattacks limiting services
+Cyberattacks on public entities across the U.S. — from police stations to school districts and courts — are causing wide-ranging issues for thousands of residents and public employees.
+Kansas’ Atchison County said its offices are closed on Tuesday after it detected and responded to a cyber incident that impacted its computer network.
+“As soon as we learned this, we began working to investigate and determine the effects of the incident,” county officials said on social media.
+Atchison County has more than 16,000 residents and is one of several municipalities to announce restrictions on services due to cyberattacks.
+Nearly three weeks after announcing a cyberattack had brought down its systems, Cleveland’s Municipal Court still has not recovered, hampering dozens of trials that had been slated to begin in March.
+A court employee told local news outlet ABC5 that workers do not have internet access and are forced to do many tasks by hand. The court’s website is still down, and they have been unable to conduct background checks since the attack began on February 23.
+The court was fully shut down for a week before reopening in a limited fashion last week. The attack on Cleveland Municipal Court was claimed on Tuesday by the Qilin ransomware gang — a group responsible for other recent attacks on local governments, as well as critical healthcare entities in the U.K. The court did not respond to requests for comment.
+New England outages
+Three other U.S. municipalities are currently dealing with cyberattacks, including Strafford County and Pelham School District in New Hampshire, as well as Connecticut’s Derby Police Department.
+Strafford County, home to 133,000 people, has been dealing with communication system outages for more than three days, according to local news outlet Foster's Daily Democrat.
+The county did not respond to requests for comment but Strafford County Commissioner Chair George Maglaras told the newspaper that they are “experiencing a network disruption” and would update the public at a later date.
+The attack was discovered on Saturday, according to officials, when a local nursing home was unable to log in to county systems that hold medical data. County offices currently do not have access to email or phone services.
+A prosecutor working on an attempted murder trial in Strafford County Superior Court called the cyberattack “debilitating” and said it took down all of the county’s electronic communications system.
+About an hour away from Strafford County, the Pelham School District warned parents on Monday it is still facing technological issues caused by a cyberattack.
+In a letter from Assistant Superintendent Sarah Marandos, the school said it has hired external cybersecurity experts to help recover but some systems are still limited.
+Teachers are using "printed materials, offline digital resources, and previously downloaded materials, to continue delivering lessons." They asked parents to be flexible with assignments, report cards and progress reports.
+Researchers at Comparitech published a report on Tuesday highlighting the growth in ransomware attacks on U.S. government organizations, which have doubled in recent years. Between 2018 and 2024, 525 individual ransomware attacks were carried out, causing an estimated $1.09 billion in downtime.
+So far this year, the company’s researchers “have logged nine confirmed ransomware attacks on U.S. government entities at federal, state, and local levels,” Comparitech’s Paul Bischoff told Recorded Future News.
+“Another 17 such attacks have been claimed by ransomware gangs but not confirmed by authorities."
+Jonathan Greig
+is a Breaking News Reporter at Recorded Future News. Jonathan has worked across the globe as a journalist since 2014. Before moving back to New York City, he worked for news outlets in South Africa, Jordan and Cambodia. He previously covered cybersecurity at ZDNet and TechRepublic.

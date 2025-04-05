@@ -1,0 +1,18 @@
+Port of Seattle, the U.S. government agency overseeing Seattle's seaport and airport, is notifying roughly 90,000 individuals of a data breach after their personal information was stolen in an August 2024 ransomware attack.
+The agency disclosed the attack on August 24, saying the resulting IT outage disrupted multiple services and systems, including reservation check-in systems, passenger display boards, the Port of Seattle website, the flySEA app, and delayed flights at Seattle-Tacoma International Airport.
+Three weeks after the initial disclosure, the Port confirmed that the Rhysida ransomware operation was behind the August 2024 breach.
+After the incident, the Port also decided not to give in to the cybercriminals' demands to pay for a decryptor even though they threatened to publish stolen data on their dark web leak site.
+"We have refused to pay the ransom demanded, and as a result, the actor may respond by posting data they claim to have stolen on their darkweb site," the Port of Seattle said on September 13, 2024.
+"Our investigation of what data the actor took is ongoing, but it does appear that some Port data was obtained by the actor in mid-to-late August. Assessment of the data taken is complex and takes time."
+Data breach impacts roughly 90,000 people
+On Thursday, April 3, 2025, the Port announced that it's now sending approximately 90,000 notification letters to individuals impacted by the resulting data breach who had a mailing address. According to the agency, roughly 71,000 of those affected by this data breach are from Washington state.
+According to a copy of the breach notification letters, the attackers stole employee, contractor, and parking data in various combinations, including names, dates of birth, Social Security numbers (or last four digits of Social Security number), driver's license or other government identification card numbers, and some medical information.
+The Port also said that it stores "very little information" on airport or maritime passengers and that its payment processing systems were unaffected by the attack.
+"At no point did this incident affect the ability to safely travel to or from SEA Airport or use the Port's maritime facilities," the Port added this week. "The proprietary systems of major airline and cruise partners were not affected, nor were the systems of federal partners like the Federal Aviation Administration, Transportation Security Administration, and U.S. Customs and Border Protection."
+Rhysida, the ransomware-as-a-service (RaaS) operation behind the Port of Seattle attack, surfaced in May 2023 and quickly gained notoriety after breaching the British Library, the Chilean Army (Ejército de Chile), the City of Columbus, Ohio, Sony subsidiary Insomniac Games, and MarineMax (the world's largest recreational boat and yacht retailer).
+Its affiliates also breached Singing River Health System, which warned almost 900,000 people that their personal and health information had been stolen in an August 2023 Rhysida ransomware attack.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Comments
+Wilser - 18 hours ago
+I signed up because well written article, however something hacked your headline picture. Suspicious AI had a hand in it.

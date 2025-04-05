@@ -1,0 +1,24 @@
+Microsoft is testing a new taskbar icon scaling feature that automatically scales down Windows taskbar icons to show more apps when it gets too overcrowded.
+The feature is gradually rolling out to Windows Insiders in the Beta (Build 26120.3671) and Dev (Build 26200.5518) channels on Windows 11, version 24H2.
+"We are starting to roll out taskbar icon scaling to Windows Insiders – an improvement to the Windows taskbar that ensures that you have quick access to more of your favorite apps, even when your taskbar is full," the Windows Insider team said. "With taskbar icon scaling, when your taskbar starts to get crowded with pinned or open apps, the icons will automatically scale down to a smaller size."
+When enabled, this new feature will allow you to access more running apps without clicking a secondary menu when you have too many programs running and their taskbar icons overflowing.
+Microsoft also allows Insiders to choose when taskbar icon scaling triggers:
+- When the taskbar is full: By default, taskbar icons will automatically shrink when the taskbar is full to maintain access to more apps without requiring additional clicks.
+- Never: Users who prefer their icons to remain the same size as before, regardless of how many apps are open, can prevent them from scaling down.
+- Always: If you like the look of smaller taskbar icons and want them to stay that way, you can set them always to be small.
+Redmond also released a test remediation package that allows Windows Insiders to test the full capabilities of the Quick Machine Recovery (QMR) tool on their Windows 11 devices.
+"The remediation package 'Quick machine recovery update for Windows 11' will be automatically installed by QMR when 'test mode' is activated. To verify the quick machine recovery remediation is installed, go to Settings > Windows Update > Update history," Microsoft said.
+It's also important to note that the remediation test package in your Windows Update history will not appear for all Windows Insiders at once since it's gradually rolling out in the Beta and Dev channels.
+Today, Microsoft has also announced a basic search history feature for the controversial AI-powered Recall feature in the Dev and Beta Channels on Copilot+ PCs. The company began rolling out the first Recall preview to Snapdragon Copilot+ PCs in November after two delays in June and October.
+Starting in December, Microsoft is also testing Recall on AMD and Intel-powered Copilot+ PCs enrolled in the Windows 11 Insider program.
+Top 10 MITRE ATT&CK© Techniques Behind 93% of Attacks
+Based on an analysis of 14M malicious actions, discover the top 10 MITRE ATT&CK techniques behind 93% of attacks and how to defend against them.
+Comments
+doncoyote - 1 day ago
+Maintaining their focus on the important issues.
+DrkKnight - 1 day ago
+Always ....... but never fix what is really wrong
+MisterVVV - 8 hours ago
+appearance fixation even in the digital world.
+More important to MS for how Windows looks than security or how it works........
+Is this what we users want?
